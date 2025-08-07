@@ -16,6 +16,11 @@ function App() {
     setNewTodo(''); // Clear the input box
   }
 
+  function handleDeleteTodo(indexToDelete) {
+    const updatedTodos = todos.filter((_, index) => index !== indexToDelete);
+    setTodos(updatedTodos);
+  }
+
   return (
     <div>
       <h1>My React To-Do App</h1>
@@ -31,7 +36,10 @@ function App() {
 
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index}>
+            {todo}
+            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
+          </li>
         ))}
       </ul>
 
